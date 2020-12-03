@@ -41,7 +41,7 @@ resource "aws_ecs_service" "my-service" {
 
   load_balancer {
     target_group_arn = aws_alb_target_group.my-tg.id
-    container_name   = "my-container"
+    container_name   = "myapp"
     container_port   = var.app_port
   }
 
