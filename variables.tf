@@ -1,45 +1,45 @@
 # variables.tf
 
-variable "aws_region" {
+variable "my-aws-region" {
   description = "The AWS region things are created in"
-  default     = "us-west-2"
+  default     = "eu-west-2"
 }
 
-variable "ecs_task_execution_role_name" {
+variable "my-ecs-task-execution-role-name" {
   description = "ECS task execution role name"
   default = "myEcsTaskExecutionRole"
 }
 
-variable "az_count" {
+variable "my-az-count" {
   description = "Number of AZs to cover in a given region"
   default     = "2"
 }
 
-variable "app_image" {
+variable "my-docker-image" {
   description = "Docker image to run in the ECS cluster"
   default     = "nginx:latest"
 }
 
-variable "app_port" {
+variable "my-docker-port" {
   description = "Port exposed by the docker image to redirect traffic to"
   default     = 80
 }
 
-variable "app_count" {
+variable "my-desired-container-count" {
   description = "Number of docker containers to run"
   default     = 2
 }
 
-variable "health_check_path" {
+variable "my-health-check-path" {
   default = "/"
 }
 
-variable "fargate_cpu" {
+variable "my-desired-fargate-cpu" {
   description = "Fargate instance CPU units to provision (1 vCPU = 1024 CPU units)"
-  default     = "1024"
+  default     = "256"
 }
 
-variable "fargate_memory" {
+variable "my-desired-fargate-memory" {
   description = "Fargate instance memory to provision (in MiB)"
-  default     = "2048"
+  default     = "512"
 }
