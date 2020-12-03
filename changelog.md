@@ -13,3 +13,4 @@ Refactored code.
 Used vpc module instead of resource. (replacing network.tf with 1a-vpc.tf)
 Added terraform.tfvars
 Updated variables.tf
+Added 9b-random-string.tf
