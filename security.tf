@@ -4,7 +4,7 @@
 resource "aws_security_group" "my-lb-sg" {
   name              = "my-lb-sg"
   description       = "controls access to the ALB"
-  vpc_id            = aws_vpc.my-vpc.id
+  vpc_id            = module.my-vpc.vpc_id
 
   ingress {
     protocol        = "tcp"
@@ -25,7 +25,7 @@ resource "aws_security_group" "my-lb-sg" {
 resource "aws_security_group" "ecs_tasks" {
   name              = "my-ecs-sg"
   description       = "allow inbound access from the ALB only"
-  vpc_id            = aws_vpc.my-vpc.id
+  vpc_id            = module.my-vpc.vpc_id
 
   ingress {
     protocol        = "tcp"

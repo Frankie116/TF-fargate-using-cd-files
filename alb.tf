@@ -2,7 +2,7 @@
 
 resource "aws_alb" "my-alb" {
   name            = "myapp-load-balancer"
-  subnets         = aws_subnet.my-pub-subnet.*.id
+  subnets         = module.my-vpc.public_subnets
   security_groups = [aws_security_group.my-lb-sg.id]
 }
 
@@ -10,7 +10,7 @@ resource "aws_alb_target_group" "my-tg" {
   name        = "myapp-target-group"
   port        = 80
   protocol    = "HTTP"
-  vpc_id      = aws_vpc.my-vpc.id
+  vpc_id      = module.my-vpc.vpc_id
   target_type = "ip"
 
   health_check {

@@ -9,5 +9,7 @@ Changelog-003
 Refactored code - changed variable names
 
 Changelog-004
-Refactored code - changed variable names
-
+Refactored code.
+Used vpc module instead of resource. (replacing network.tf with 1a-vpc.tf)
+Added terraform.tfvars
+Updated variables.tf
