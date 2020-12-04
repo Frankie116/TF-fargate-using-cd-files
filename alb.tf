@@ -4,7 +4,7 @@
 resource "aws_alb" "my-alb" {
   name            = "myapp-load-balancer"
   subnets         = module.my-vpc.public_subnets
-  security_groups = [module.my-lb-sg.this_security_group_id]
+  security_groups = [aws_security_group.my-lb-sg.id]
 }
 
 resource "aws_alb_target_group" "my-tg" {
