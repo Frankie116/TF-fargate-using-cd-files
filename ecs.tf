@@ -40,10 +40,10 @@ resource "aws_ecs_service" "my-service" {
   }
 
   load_balancer {
-    target_group_arn = aws_alb_target_group.my-tg.id
+    target_group_arn = aws_lb_target_group.my-lb-tg.id
     container_name   = "myapp"
     container_port   = var.my-docker-port
   }
 
-  depends_on = [aws_alb_listener.my-alb-listener, aws_iam_role_policy_attachment.my-iampa-ecs-task-exec]
+  depends_on = [aws_lb_listener.my-lb-listener-http, aws_iam_role_policy_attachment.my-iampa-ecs-task-exec]
 }
