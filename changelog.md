@@ -18,3 +18,6 @@ Added 9b-random-string.tf
 Changelog-005
 Refactored security groups.  
 Added security rules
+
+Changelog-006
+Refactored code.

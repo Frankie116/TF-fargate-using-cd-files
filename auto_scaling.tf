@@ -1,24 +1,24 @@
 # auto_scaling.tf
 
 resource "aws_appautoscaling_target" "my-autoscaling-target" {
-  service_namespace  = "ecs"
-  resource_id        = "service/${aws_ecs_cluster.my-cluster.name}/${aws_ecs_service.my-service.name}"
-  scalable_dimension = "ecs:service:DesiredCount"
-  min_capacity       = 2
-  max_capacity       = 4
+  service_namespace               = "ecs"
+  resource_id                     = "service/${aws_ecs_cluster.my-cluster.name}/${aws_ecs_service.my-service.name}"
+  scalable_dimension              = "ecs:service:DesiredCount"
+  min_capacity                    = 2
+  max_capacity                    = 4
 }
 
 # Automatically scale capacity up by one
 resource "aws_appautoscaling_policy" "my-autoscaling-policy-up" {
-  name               = "myapp_scale_up"
-  service_namespace  = "ecs"
-  resource_id        = "service/${aws_ecs_cluster.my-cluster.name}/${aws_ecs_service.my-service.name}"
-  scalable_dimension = "ecs:service:DesiredCount"
+  name                            = "myapp_scale_up"
+  service_namespace               = "ecs"
+  resource_id                     = "service/${aws_ecs_cluster.my-cluster.name}/${aws_ecs_service.my-service.name}"
+  scalable_dimension              = "ecs:service:DesiredCount"
 
   step_scaling_policy_configuration {
-    adjustment_type         = "ChangeInCapacity"
-    cooldown                = 60
-    metric_aggregation_type = "Maximum"
+    adjustment_type               = "ChangeInCapacity"
+    cooldown                      = 60
+    metric_aggregation_type       = "Maximum"
 
     step_adjustment {
       metric_interval_lower_bound = 0
@@ -31,15 +31,15 @@ resource "aws_appautoscaling_policy" "my-autoscaling-policy-up" {
 
 # Automatically scale capacity down by one
 resource "aws_appautoscaling_policy" "my-autoscaling-policy-down" {
-  name               = "myapp_scale_down"
-  service_namespace  = "ecs"
-  resource_id        = "service/${aws_ecs_cluster.my-cluster.name}/${aws_ecs_service.my-service.name}"
+  name                            = "myapp_scale_down"
+  service_namespace               = "ecs"
+  resource_id                     = "service/${aws_ecs_cluster.my-cluster.name}/${aws_ecs_service.my-service.name}"
   scalable_dimension = "ecs:service:DesiredCount"
 
   step_scaling_policy_configuration {
-    adjustment_type         = "ChangeInCapacity"
-    cooldown                = 60
-    metric_aggregation_type = "Maximum"
+    adjustment_type               = "ChangeInCapacity"
+    cooldown                      = 60
+    metric_aggregation_type       = "Maximum"
 
     step_adjustment {
       metric_interval_upper_bound = 0
@@ -52,38 +52,38 @@ resource "aws_appautoscaling_policy" "my-autoscaling-policy-down" {
 
 # CloudWatch alarm that triggers the autoscaling up policy
 resource "aws_cloudwatch_metric_alarm" "my-cw-service-cpu-high" {
-  alarm_name          = "myapp_cpu_utilization_high"
-  comparison_operator = "GreaterThanOrEqualToThreshold"
-  evaluation_periods  = "2"
-  metric_name         = "CPUUtilization"
-  namespace           = "AWS/ECS"
-  period              = "60"
-  statistic           = "Average"
-  threshold           = "85"
+  alarm_name                     = "myapp_cpu_utilization_high"
+  comparison_operator            = "GreaterThanOrEqualToThreshold"
+  evaluation_periods             = "2"
+  metric_name                    = "CPUUtilization"
+  namespace                      = "AWS/ECS"
+  period                         = "60"
+  statistic                      = "Average"
+  threshold                      = "85"
 
-  dimensions = {
-    ClusterName = aws_ecs_cluster.my-cluster.name
-    ServiceName = aws_ecs_service.my-service.name
+  dimensions                     = {
+    ClusterName                  = aws_ecs_cluster.my-cluster.name
+    ServiceName                  = aws_ecs_service.my-service.name
   }
 
-  alarm_actions = [aws_appautoscaling_policy.my-autoscaling-policy-up.arn]
+  alarm_actions                  = [aws_appautoscaling_policy.my-autoscaling-policy-up.arn]
 }
 
 # CloudWatch alarm that triggers the autoscaling down policy
 resource "aws_cloudwatch_metric_alarm" "my-cw-service-cpu-low" {
-  alarm_name          = "myapp_cpu_utilization_low"
-  comparison_operator = "LessThanOrEqualToThreshold"
-  evaluation_periods  = "2"
-  metric_name         = "CPUUtilization"
-  namespace           = "AWS/ECS"
-  period              = "60"
-  statistic           = "Average"
-  threshold           = "10"
+  alarm_name                     = "myapp_cpu_utilization_low"
+  comparison_operator            = "LessThanOrEqualToThreshold"
+  evaluation_periods             = "2"
+  metric_name                    = "CPUUtilization"
+  namespace                      = "AWS/ECS"
+  period                         = "60"
+  statistic                      = "Average"
+  threshold                      = "10"
 
-  dimensions = {
-    ClusterName = aws_ecs_cluster.my-cluster.name
-    ServiceName = aws_ecs_service.my-service.name
+  dimensions                     = {
+    ClusterName                  = aws_ecs_cluster.my-cluster.name
+    ServiceName                  = aws_ecs_service.my-service.name
   }
 
-  alarm_actions = [aws_appautoscaling_policy.my-autoscaling-policy-down.arn]
+  alarm_actions                  = [aws_appautoscaling_policy.my-autoscaling-policy-down.arn]
 }
