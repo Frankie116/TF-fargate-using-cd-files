@@ -1,12 +1,13 @@
 # ---------------------------------------------------------------------------------------------------
-# Library: /mygit/frankie116/library/v1.3
-# create security group rules
+# Library: /mygit/frankie116/library/v1.4
+# Creates security group rules
 # ---------------------------------------------------------------------------------------------------
 
 #req:
 # 4b-sg.tf            - aws_security_group.my-lb-sg.id
 # 4b-sg.tf            - aws_security_group.my-ecs-sg.id
 # variables.tf        - var.my-docker-port
+
 
 resource "aws_security_group_rule" "my-lb-ingress" {
   description              = "allow only docker port inbound from anywhere"
@@ -16,7 +17,6 @@ resource "aws_security_group_rule" "my-lb-ingress" {
   from_port                = var.my-docker-port
   to_port                  = var.my-docker-port
   cidr_blocks              = ["0.0.0.0/0"]
-
   depends_on = [aws_security_group.my-lb-sg,aws_security_group.my-ecs-sg]
 }
 
@@ -28,7 +28,6 @@ resource "aws_security_group_rule" "my-lb-egress" {
   from_port                = 0
   to_port                  = 0
   cidr_blocks              = ["0.0.0.0/0"]
-
   depends_on = [aws_security_group.my-lb-sg,aws_security_group.my-ecs-sg]
 }
 
@@ -40,7 +39,6 @@ resource "aws_security_group_rule" "my-ecs-ingress" {
   from_port                = var.my-docker-port
   to_port                  = var.my-docker-port
   source_security_group_id = aws_security_group.my-lb-sg.id
-
   depends_on = [aws_security_group.my-lb-sg,aws_security_group.my-ecs-sg]
 }
 
@@ -52,6 +50,5 @@ resource "aws_security_group_rule" "my-ecs-egress" {
   from_port                = 0
   to_port                  = 0
   cidr_blocks              = ["0.0.0.0/0"]
-
   depends_on = [aws_security_group.my-lb-sg,aws_security_group.my-ecs-sg]
 }

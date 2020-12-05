@@ -3,6 +3,7 @@
 # variables used in this project
 # ---------------------------------------------------------------------------------------------------
 
+
 # main.tf -------------------------------------------------------------
 variable "my-aws-region" {
   description = "The AWS region things are created in"
@@ -22,6 +23,7 @@ variable my-environment {
   type                  = string
   default               = "dev"
 }
+
 
 # 1a-vpc.tf -------------------------------------------------------------
 variable my-vpc-cidr-block {
@@ -89,36 +91,27 @@ variable my-pub-subnet-cidr-blocks {
 }
 
 
-
-variable "my-ecs-task-execution-role-name" {
-  description = "ECS task execution role name"
-  default = "myEcsTaskExecutionRole"
-}
-
-variable "my-az-count" {
-  description = "Number of AZs to cover in a given region"
-  default     = "2"
-}
-
-variable "my-docker-image" {
-  description = "Docker image to run in the ECS cluster"
-  default     = "nginx:latest"
-}
-
+# 04c-sg-rules -------------------------------------------------------------
 variable "my-docker-port" {
   description = "Port exposed by the docker image to redirect traffic to"
   default     = 80
 }
 
-variable "my-desired-container-count" {
-  description = "Number of docker containers to run"
-  default     = 2
-}
 
+# 05c-lb-tg ----------------------------------------------------------------
 variable "my-health-check-path" {
   default = "/"
 }
 
+
+# 08a-iam-roles ------------------------------------------------------------
+variable "my-ecs-task-execution-role-name" {
+  description = "ECS task execution role name"
+  default = "myEcsTaskExecutionRole"
+}
+
+
+# 12a-ecs -------------------------------------------------------------------
 variable "my-desired-fargate-cpu" {
   description = "Fargate instance CPU units to provision (1 vCPU = 1024 CPU units)"
   default     = "256"
@@ -128,3 +121,27 @@ variable "my-desired-fargate-memory" {
   description = "Fargate instance memory to provision (in MiB)"
   default     = "512"
 }
+variable "my-az-count" {
+  description = "Number of AZs to cover in a given region"
+  default     = "2"
+}
+
+
+
+# 09c-template-file ----------------------------------------------------------
+variable "my-docker-image" {
+  description = "Docker image to run in the ECS cluster"
+  default     = "nginx:latest"
+}
+
+
+# 12a-ecs --------------------------------------------------------------------
+variable "my-desired-container-count" {
+  description = "Number of docker containers to run"
+  default     = 2
+}
+
+
+
+
+

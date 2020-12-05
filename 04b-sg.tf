@@ -1,6 +1,6 @@
 # ---------------------------------------------------------------------------------------------------
-# Library: /mygit/frankie116/library/v1.3
-# create security groups
+# Library: /mygit/frankie116/library/v1.4
+# Creates security groups
 # ---------------------------------------------------------------------------------------------------
 
 #req:
@@ -35,7 +35,6 @@ resource "aws_security_group" "my-ecs-sg" {
       Project            = var.my-project-name
       Environment        = var.my-environment
   }
-
   depends_on = [aws_security_group.my-lb-sg]
 }
 

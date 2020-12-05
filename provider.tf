@@ -1,7 +1,9 @@
 
-# provider.tf
+# ---------------------------------------------------------------------------------------------------
+# Library: /mygit/frankie116/library/v1.3
+# provider details
+# ---------------------------------------------------------------------------------------------------
 
-# Specify the provider and access details
 provider "aws" {
   shared_credentials_file = "$HOME/.aws/credentials"
   profile                 = "default"

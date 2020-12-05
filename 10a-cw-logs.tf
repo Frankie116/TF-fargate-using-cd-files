@@ -1,14 +1,20 @@
-# logs.tf
+# ---------------------------------------------------------------------------------------------------
+# Library: /mygit/frankie116/library/v1.4
+# Creates cloudwatch logs
+# ---------------------------------------------------------------------------------------------------
 
-# Set up CloudWatch group and log stream and retain logs for 30 days
+# req:
+# None
+
+
 resource "aws_cloudwatch_log_group" "my-cw-log-group" {
   name               = "/ecs/myapp"
   retention_in_days  = 30
-
   tags               = {
     Name             = "my-cw-log-group"
   }
 }
+
 
 resource "aws_cloudwatch_log_stream" "my-cw-log-stream" {
   name               = "my-log-stream"

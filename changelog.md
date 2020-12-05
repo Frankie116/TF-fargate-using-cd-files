@@ -21,3 +21,11 @@ Added security rules
 
 Changelog-006
 Refactored code.
+
+
+Changelog-007
+Refactored code.
+
+
+Changelog-008
+Added template & s3 files

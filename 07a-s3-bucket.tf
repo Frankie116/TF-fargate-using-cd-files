@@ -1,6 +1,6 @@
 # ---------------------------------------------------------------------------------------------------
-# Library: /mygit/frankie116/library/v1.3
-# create an s3 bucket & bucket policy to enable lb logs to be stored.  (Delete on destroy)
+# Library: /mygit/frankie116/library/v1.4
+# Creates an s3 bucket & bucket policy to enable lb logs to be stored.  (Delete on destroy)
 # ---------------------------------------------------------------------------------------------------
 
 # req:
@@ -8,15 +8,14 @@
 # variables.tf        - var.my-project-name
 # variables.tf        - var.my-environment
 
+
 resource "aws_s3_bucket" "my-s3-log-bucket" {
   bucket                 = "my-s3-log-bucket-${random_string.my-random-string.result}"
   acl                    = "private"
   force_destroy          = true
-  
   versioning {
     enabled              = true
   }
-
     tags                 = {
     Name                 = "my-s3-log-bucket-${random_string.my-random-string.result}"
     Terraform            = "true"
@@ -24,6 +23,7 @@ resource "aws_s3_bucket" "my-s3-log-bucket" {
     Environment          = var.my-environment
   }
 }
+
 
 resource "aws_s3_bucket_policy" "my-s3-log-bucket" {
   bucket                = aws_s3_bucket.my-s3-log-bucket.id
