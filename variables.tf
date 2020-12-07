@@ -104,6 +104,20 @@ variable "my-health-check-path" {
 }
 
 
+# 06a-route53.tf -----------------------------------------------------------
+variable "my-existing-r53-zone" {
+    default             = "redacted.com"    # this variable should point to an exiting r53 hosted zone
+}
+
+variable "my-lb-hosted-zone" {
+    default             = "ZHREDACTEDK8"
+} 
+
+variable "my-servername" {
+    default             = "my-server"
+} 
+
+
 # 08a-iam-roles ------------------------------------------------------------
 variable "my-ecs-task-execution-role-name" {
   description = "ECS task execution role name"

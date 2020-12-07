@@ -26,7 +26,7 @@ resource "aws_appautoscaling_policy" "my-as-policy-up" {
   step_scaling_policy_configuration {
     adjustment_type               = "ChangeInCapacity"
     cooldown                      = 60
-    metric_aggregation_type       = "Maximum"
+    metric_aggregation_type       = "Average"
     step_adjustment {
       metric_interval_lower_bound = 0
       scaling_adjustment          = 1
@@ -45,7 +45,7 @@ resource "aws_appautoscaling_policy" "my-as-policy-down" {
   step_scaling_policy_configuration {
     adjustment_type               = "ChangeInCapacity"
     cooldown                      = 60
-    metric_aggregation_type       = "Maximum"
+    metric_aggregation_type       = "Average"
     step_adjustment {
       metric_interval_upper_bound = 0
       scaling_adjustment          = -1

@@ -17,11 +17,11 @@ resource "aws_lb_target_group" "my-lb-tg" {
   name                  = "my-lb-target-group"
   vpc_id                = module.my-vpc.vpc_id
   protocol              = "HTTP"
-  port                  = 80
+  port                  = var.my-docker-port
   target_type           = "ip"
   health_check {
     healthy_threshold   = "3"
-    interval            = "30"
+    interval            = "180"
     protocol            = "HTTP"
     matcher             = "200"
     timeout             = "3"

@@ -29,3 +29,8 @@ Refactored code.
 
 Changelog-008
 Added template & s3 files
+
+Changelog-009
+Refactored. 
+Added route53 to enable private dns zone to be used.
+Still need to resolve autoscaling issue. (currrent docker container requires port 8080, however, lb target group health checks are failing on port 8080. Therefore, auto scaling is constantly stopping/starting fargate tasks.  Health checks pass on port 80 though.)
