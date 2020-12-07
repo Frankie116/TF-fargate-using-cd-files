@@ -100,7 +100,7 @@ variable "my-docker-port" {
 
 # 05c-lb-tg ----------------------------------------------------------------
 variable "my-health-check-path" {
-  default = "/"
+  default = "/login"
 }
 
 

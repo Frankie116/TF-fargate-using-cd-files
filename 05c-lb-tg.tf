@@ -14,14 +14,14 @@
 
 
 resource "aws_lb_target_group" "my-lb-tg" {
-  name                  = "my-lb-target-group"
+  name                  = "my-lb-tg"
   vpc_id                = module.my-vpc.vpc_id
   protocol              = "HTTP"
   port                  = var.my-docker-port
   target_type           = "ip"
   health_check {
     healthy_threshold   = "3"
-    interval            = "180"
+    interval            = "30"
     protocol            = "HTTP"
     matcher             = "200"
     timeout             = "3"
@@ -29,7 +29,7 @@ resource "aws_lb_target_group" "my-lb-tg" {
     unhealthy_threshold = "2"
   }
   tags                  = {
-    Name                = "my-lb-target-group-${random_string.my-random-string.result}"
+    Name                = "my-lb-tg-${random_string.my-random-string.result}"
     Terraform           = "true"
     Project             = var.my-project-name
     Environment         = var.my-environment
@@ -39,7 +39,7 @@ resource "aws_lb_target_group" "my-lb-tg" {
 
 # resource "aws_lb_target_group_attachment" "my-lb-attachment" {
 #   count                 = local.instance-count
-#   target_group_arn      = aws_lb_target_group.my-lb-target-group.arn
+#   target_group_arn      = aws_lb_target_group.my-lb-tg.arn
 #   target_id             = aws_instance.my-server[count.index].id
 # # port                  = 80
 # }
