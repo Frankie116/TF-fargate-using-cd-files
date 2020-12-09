@@ -37,3 +37,9 @@ Still need to resolve autoscaling issue. (currrent docker container requires por
 
 Changelog-010
 Resolved autoscaling issue by updating the lb health checks to monitor "/login" in the path instead of just "/".
+
+Changelog-011
+Added ecs grace period.  
+Enables ecs to ignore loadbalancer's unhealthy alarms while containers are being created.
+This stops autoscaling kicking in and stopping bootup/recreation.
+Updated health check variables.

@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------------------------------------
-# Library: /mygit/frankie116/library/v1.2
+# Library: /mygit/frankie116/library/v1.5
 # variables used in this project
 # ---------------------------------------------------------------------------------------------------
 
 
 # main.tf -------------------------------------------------------------
 variable "my-aws-region" {
-  description = "The AWS region things are created in"
-  default     = "eu-west-2"
+  description           = "The AWS region things are created in"
+  default               = "eu-west-2"
 }
 
 
@@ -93,14 +93,18 @@ variable my-pub-subnet-cidr-blocks {
 
 # 04c-sg-rules -------------------------------------------------------------
 variable "my-docker-port" {
-  description = "Port exposed by the docker image to redirect traffic to"
-  default     = 80
+  description           = "Port exposed by the docker image to redirect traffic to"
+  default               = 80
 }
 
 
 # 05c-lb-tg ----------------------------------------------------------------
-variable "my-health-check-path" {
-  default = "/login"
+variable "my-hc-path" {
+  default               = "/"
+}
+
+variable "my-hc-interval" {
+  default               = "30"
 }
 
 
@@ -120,39 +124,39 @@ variable "my-servername" {
 
 # 08a-iam-roles ------------------------------------------------------------
 variable "my-ecs-task-execution-role-name" {
-  description = "ECS task execution role name"
-  default = "myEcsTaskExecutionRole"
+  description           = "ECS task execution role name"
+  default               = "myEcsTaskExecutionRole"
 }
 
 
 # 12a-ecs -------------------------------------------------------------------
 variable "my-desired-fargate-cpu" {
-  description = "Fargate instance CPU units to provision (1 vCPU = 1024 CPU units)"
-  default     = "256"
+  description           = "Fargate instance CPU units to provision (1 vCPU = 1024 CPU units)"
+  default               = "256"
 }
 
 variable "my-desired-fargate-memory" {
-  description = "Fargate instance memory to provision (in MiB)"
-  default     = "512"
+  description           = "Fargate instance memory to provision (in MiB)"
+  default               = "512"
 }
 variable "my-az-count" {
-  description = "Number of AZs to cover in a given region"
-  default     = "2"
+  description           = "Number of AZs to cover in a given region"
+  default               = "2"
 }
 
 
 
 # 09c-template-file ----------------------------------------------------------
 variable "my-docker-image" {
-  description = "Docker image to run in the ECS cluster"
-  default     = "nginx:latest"
+  description           = "Docker image to run in the ECS cluster"
+  default               = "nginx:latest"
 }
 
 
 # 12a-ecs --------------------------------------------------------------------
 variable "my-desired-container-count" {
-  description = "Number of docker containers to run"
-  default     = 2
+  description           = "Number of docker containers to run"
+  default               = 2
 }
 
 
