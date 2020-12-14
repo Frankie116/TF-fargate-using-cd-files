@@ -1,5 +1,6 @@
 # ---------------------------------------------------------------------------------------------------
-# Library: /mygit/frankie116/library/v1.3
+# version  1.3
+# Library: https://github.com/Frankie116/my-library.git
 # Uses an existing script to boot an ec2 instance. 
 # ---------------------------------------------------------------------------------------------------
 

@@ -1,5 +1,6 @@
 # ---------------------------------------------------------------------------------------------------
-# Library: /mygit/frankie116/library/v1.4
+# version  1.5
+# Library: https://github.com/Frankie116/my-library.git
 # Creates a vpc
 # ---------------------------------------------------------------------------------------------------
 
@@ -21,11 +22,28 @@ module "my-vpc" {
   public_subnets         = slice(var.my-pub-subnet-cidr-blocks, 0, var.my-pub-subnets-per-vpc)
   enable_nat_gateway     = true
   enable_vpn_gateway     = false
+
   tags                   = {
     Name                 = "my-vpc-${random_string.my-random-string.result}"
     Project              = var.my-project-name
     Environment          = var.my-environment
     Terraform            = "true"
+  }
+
+  private_subnet_tags    = {
+    Name                 = "my-priv-subnet-${random_string.my-random-string.result}"
+  }
+
+  public_subnet_tags     = {
+    Name                 = "my-pub-subnet-${random_string.my-random-string.result}"
+  }
+
+  nat_gateway_tags    = {
+    Name                 = "my-ngw-${random_string.my-random-string.result}"
+  }
+  
+  igw_tags               = {
+    Name                 = "my-igw-${random_string.my-random-string.result}"
   }
 }
 
