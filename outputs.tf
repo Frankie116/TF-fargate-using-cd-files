@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------------------------------
-# version  1.3
+# version  1.5
 # Library: https://github.com/Frankie116/my-library.git
 # outputs
 # ---------------------------------------------------------------------------------------------------
@@ -23,8 +23,7 @@ output my-docker-port {
 }
 
 # 09c-template-file ----------------------------------------------------------
-output my-docker-image {
-  description          = "Name of the docker image"
-  value                = var.my-docker-image
+output my-ecs-cd-template {
+  description          = "Name of the container definition"
+  value                = var.my-ecs-cd-template 
 }
-

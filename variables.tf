@@ -148,9 +148,9 @@ variable "my-az-count" {
 
 
 # 09c-template-file ----------------------------------------------------------
-variable "my-docker-image" {
-  description           = "Docker image to run in the ECS cluster"
-  default               = "nginx:latest"
+variable "my-ecs-cd-template" {
+  description           = "ecs container definition template"
+  default               = "my-ecs-cd-template.json.tpl"
 }
 
 

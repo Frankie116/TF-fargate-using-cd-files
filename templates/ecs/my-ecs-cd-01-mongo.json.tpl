@@ -7,14 +7,14 @@
         "logDriver": "awslogs",
         "options": {
           "awslogs-group": "/ecs/myapp",
-          "awslogs-region": "${my-cd-aws-region}",
+          "awslogs-region": "eu-west-2",
           "awslogs-stream-prefix": "ecs"
         }
     },
     "portMappings": [
       {
-        "containerPort": 3000,
-        "hostPort": 3000
+        "containerPort": ${my-cd-port},
+        "hostPort": ${my-cd-port}
       }
     ],
     "healthCheck": {
@@ -41,7 +41,7 @@
         "logDriver": "awslogs",
         "options": {
           "awslogs-group": "/ecs/myapp",
-          "awslogs-region": "${my-cd-aws-region}",
+          "awslogs-region": "eu-west-2",
           "awslogs-stream-prefix": "ecs"
         }
     },
@@ -82,7 +82,7 @@
         "logDriver": "awslogs",
         "options": {
           "awslogs-group": "/ecs/myapp",
-          "awslogs-region": "${my-cd-aws-region}",
+          "awslogs-region": "eu-west-2",
           "awslogs-stream-prefix": "ecs"
         }
     },
