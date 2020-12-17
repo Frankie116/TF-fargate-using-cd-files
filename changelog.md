@@ -43,3 +43,20 @@ Added ecs grace period.
 Enables ecs to ignore loadbalancer's unhealthy alarms while containers are being created.
 This stops autoscaling kicking in and stopping bootup/recreation.
 Updated health check variables.
+
+Changelog-012
+sg restored to allow only my-docker-port into lb and into ecs-sg
+09c-template-file.tf 
+    - Template filename stored as a variable in terraform.tfvars.
+    - A corresponding ecs-cd file with the container definition will be created for each required application.
+    - the ecs-cd will be stored in ./templates.ecs
+    - multiple containers can be defined in this file which corresponds to a single task definition.
+    - fargate-memory & fargate-cpu variables are not currently used within templates at this time.
+
+11a-auto_scaling.tf
+    - auto-scaling min_capacity variable will now be equal to var.my-desired-container-count
+
+12a-ecs.tf
+    - split into 12a-ecs-service.tf & 12b-ecs-td.tf to make it more modular
+
+removed my-docker-image variable from ouputs.tf & variables.tf and replaced with my-ecs-cd-template variable instead.

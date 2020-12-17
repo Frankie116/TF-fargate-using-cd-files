@@ -118,8 +118,8 @@ variable "my-lb-hosted-zone" {
     default             = "ZHREDACTEDK8"
 } 
 
-variable "my-servername" {
-    default             = "my-server"
+variable "my-application" {
+    default             = "my-app"
 } 
 
 
@@ -148,18 +148,17 @@ variable "my-az-count" {
 
 
 # 09c-template-file ----------------------------------------------------------
-variable "my-docker-image" {
-  description           = "Docker image to run in the ECS cluster"
-  default               = "nginx:latest"
+variable "my-ecs-cd-template" {
+  description           = "ecs container definition template"
+  default               = "my-ecs-cd-template.json.tpl"
 }
 
 
 # 12a-ecs --------------------------------------------------------------------
 variable "my-desired-container-count" {
   description           = "Number of docker containers to run"
-  default               = 2
+  default               = 1
 }
-
 
 
 

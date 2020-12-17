@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------------------------------
-# version  1.4
+# version  1.6
 # Library: https://github.com/Frankie116/my-library.git
 #  Project: lab051b-build-terraform-fargate
 ## Purpose: This project creates a loadbalanced fargate infrastructure used to host a   

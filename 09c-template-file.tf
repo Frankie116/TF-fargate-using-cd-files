@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------------------------------
-# version  1.3
+# version  1.5
 # Library: https://github.com/Frankie116/my-library.git
 # Uses an existing script to boot an ec2 instance. 
 # ---------------------------------------------------------------------------------------------------
@@ -17,12 +17,11 @@
 
 
 data "template_file" "my-script" {
-  template                 = file("./templates/ecs/myapp.json.tpl")
-  vars                     = {
-    app_image              = var.my-docker-image
-    app_port               = var.my-docker-port
-    fargate_cpu            = var.my-desired-fargate-cpu
-    fargate_memory         = var.my-desired-fargate-memory
-    aws_region             = var.my-aws-region
+  template                   = file("./templates/ecs/${var.my-ecs-cd-template}")
+  vars                       = {
+    my-cd-port               = var.my-docker-port
+    my-cd-fargate-cpu        = var.my-desired-fargate-cpu
+    my-cd-fargate-memory     = var.my-desired-fargate-memory
+    my-cd-aws-region         = var.my-aws-region
   }
 }
