@@ -157,7 +157,7 @@ variable "my-docker-image" {
 # 12a-ecs --------------------------------------------------------------------
 variable "my-desired-container-count" {
   description           = "Number of docker containers to run"
-  default               = 2
+  default               = 1
 }
 
 

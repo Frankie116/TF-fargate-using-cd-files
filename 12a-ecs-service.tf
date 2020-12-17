@@ -22,18 +22,6 @@ resource "aws_ecs_cluster" "my-ecs-cluster" {
   name                     = "my-ecs-cluster"
 }
 
-
-resource "aws_ecs_task_definition" "my-ecs-td" {
-  family                             = "myapp-task"
-  execution_role_arn                 = aws_iam_role.my-iamrole-ecs-task-exec.arn
-  network_mode                       = "awsvpc"
-  requires_compatibilities           = ["FARGATE"]
-  cpu                                = var.my-desired-fargate-cpu
-  memory                             = var.my-desired-fargate-memory
-  container_definitions              = data.template_file.my-script.rendered
-}
-
-
 resource "aws_ecs_service" "my-ecs-service" {
   name                               = "my-ecs-service"
   cluster                            = aws_ecs_cluster.my-ecs-cluster.id

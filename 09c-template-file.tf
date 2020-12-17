@@ -17,12 +17,12 @@
 
 
 data "template_file" "my-script" {
-  template                 = file("./templates/ecs/myapp.json.tpl")
-  vars                     = {
-    app_image              = var.my-docker-image
-    app_port               = var.my-docker-port
-    fargate_cpu            = var.my-desired-fargate-cpu
-    fargate_memory         = var.my-desired-fargate-memory
-    aws_region             = var.my-aws-region
+  template                   = file("./templates/ecs/my-container-def-script.json.tpl")
+  vars                       = {
+    s-image                  = var.my-docker-image
+    s-port                   = var.my-docker-port
+    s-fargate-cpu            = var.my-desired-fargate-cpu
+    s-fargate-memory         = var.my-desired-fargate-memory
+    s-aws-region             = var.my-aws-region
   }
 }
