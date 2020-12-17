@@ -44,7 +44,7 @@ Enables ecs to ignore loadbalancer's unhealthy alarms while containers are being
 This stops autoscaling kicking in and stopping bootup/recreation.
 Updated health check variables.
 
-Changelog-011-feature09
+Changelog-012
 sg restored to allow only my-docker-port into lb and into ecs-sg
 09c-template-file.tf 
     - Template filename stored as a variable in terraform.tfvars.

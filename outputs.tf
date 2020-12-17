@@ -5,9 +5,9 @@
 # ---------------------------------------------------------------------------------------------------
 
 
-output "my-alb-hostname" {
-  value = aws_lb.my-alb.dns_name
-}
+# output "my-alb-hostname" {
+#   value = aws_lb.my-alb.dns_name
+# }
 
 # 6a-route53.tf ----------------------------------------------------------
 output this-new-dns-name {

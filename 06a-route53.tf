@@ -13,7 +13,7 @@ data "aws_route53_zone" "my-r53zone" {
 
 resource "aws_route53_record" "my-r53-record" {
   zone_id                    = data.aws_route53_zone.my-r53zone.zone_id
-  name                       = "${var.my-servername}.${data.aws_route53_zone.my-r53zone.name}"
+  name                       = "${var.my-application}.${data.aws_route53_zone.my-r53zone.name}"
   type                       = "A"
 
   alias {
@@ -34,7 +34,7 @@ resource "aws_route53_record" "my-r53-record" {
 # use config below to point to an eip ----------------------------------------------------------------
 # resource "aws_route53_record" "my-r53-record" {
 #   zone_id                  = data.aws_route53_zone.my-r53zone.zone_id
-#   name                     = "${var.my-servername}.${data.aws_route53_zone.my-r53zone.name}"
+#   name                     = "${var.my-application}.${data.aws_route53_zone.my-r53zone.name}"
 #   type                     = "A"
 #   ttl                      = "300"
 #   records                  = [data.aws_eip.my-eip.public_ip]

@@ -118,8 +118,8 @@ variable "my-lb-hosted-zone" {
     default             = "ZHREDACTEDK8"
 } 
 
-variable "my-servername" {
-    default             = "my-server"
+variable "my-application" {
+    default             = "my-app"
 } 
 
 
@@ -159,7 +159,6 @@ variable "my-desired-container-count" {
   description           = "Number of docker containers to run"
   default               = 1
 }
-
 
 
 

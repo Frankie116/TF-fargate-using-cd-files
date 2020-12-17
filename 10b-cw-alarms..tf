@@ -1,7 +1,7 @@
 # ---------------------------------------------------------------------------------------------------
 # version  1.4
 # Library: https://github.com/Frankie116/my-library.git
-# create cloudwatch alarms used to trigger auto-scaling
+# Creates cloudwatch alarms used to trigger auto-scaling
 # ---------------------------------------------------------------------------------------------------
 
 # req:
