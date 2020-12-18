@@ -53,3 +53,16 @@ resource "aws_security_group_rule" "my-ecs-egress" {
   cidr_blocks              = ["0.0.0.0/0"]
   depends_on = [aws_security_group.my-lb-sg,aws_security_group.my-ecs-sg]
 }
+
+# -----------------------------------------------------------------------
+
+# resource "aws_security_group_rule" "my-lb-ingress2" {
+#   description              = "allow only docker port inbound from anywhere"
+#   security_group_id        = aws_security_group.my-lb-sg.id
+#   type                     = "ingress"
+#   protocol                 = "tcp"
+#   from_port                = 8081
+#   to_port                  = 8081
+#   cidr_blocks              = ["0.0.0.0/0"]
+#   depends_on = [aws_security_group.my-lb-sg,aws_security_group.my-ecs-sg]
+# }

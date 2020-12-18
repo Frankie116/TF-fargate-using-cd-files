@@ -60,3 +60,4 @@ sg restored to allow only my-docker-port into lb and into ecs-sg
     - split into 12a-ecs-service.tf & 12b-ecs-td.tf to make it more modular
 
 removed my-docker-image variable from ouputs.tf & variables.tf and replaced with my-ecs-cd-template variable instead.
+

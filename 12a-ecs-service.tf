@@ -33,7 +33,7 @@ resource "aws_ecs_service" "my-ecs-service" {
   }
   load_balancer { 
     target_group_arn                 = aws_lb_target_group.my-lb-tg.id
-    container_name                   = "myapp"
+    container_name                   = "mongo-express"
     container_port                   = var.my-docker-port
   }
   depends_on                         = [aws_lb_listener.my-lb-listener-http, aws_iam_role_policy_attachment.my-iampa-ecs-task-exec]
