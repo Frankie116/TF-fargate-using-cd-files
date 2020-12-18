@@ -1,7 +1,7 @@
 [
    {
     "name": "myapp",
-    "image": "docker.io/frankie116/my-app:docker-ver",
+    "image": "docker.io/frankie116/my-app:local-ver",
     "networkMode": "awsvpc",
     "logConfiguration": {
         "logDriver": "awslogs",
