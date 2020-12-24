@@ -38,10 +38,53 @@ resource "aws_lb_target_group" "my-lb-tg" {
   }
 }
 
+resource "aws_lb_target_group" "my-lb-tg-27017" {
+  name                  = "my-lb-tg-27017"
+  vpc_id                = module.my-vpc.vpc_id
+  protocol              = "HTTP"
+  port                  = 27017
+  target_type           = "ip"
+  health_check {
+    healthy_threshold   = "3"
+    interval            = var.my-hc-interval
+    protocol            = "HTTP"
+    matcher             = "200"
+    timeout             = "3"
+    path                = var.my-hc-path
+    unhealthy_threshold = "2"
+  }
+  tags                  = {
+    Name                = "my-lb-tg-27017-${random_string.my-random-string.result}"
+    Terraform           = "true"
+    Project             = var.my-project-name
+    Environment         = var.my-environment
+  }
+}
 
-# resource "aws_lb_target_group_attachment" "my-lb-attachment" {
-#   count                 = local.instance-count
-#   target_group_arn      = aws_lb_target_group.my-lb-tg.arn
-#   target_id             = aws_instance.my-server[count.index].id
-# # port                  = 80
+resource "aws_lb_target_group" "my-lb-tg-8081" {
+  name                  = "my-lb-tg-8081"
+  vpc_id                = module.my-vpc.vpc_id
+  protocol              = "HTTP"
+  port                  = 8081
+  target_type           = "ip"
+  health_check {
+    healthy_threshold   = "3"
+    interval            = var.my-hc-interval
+    protocol            = "HTTP"
+    matcher             = "200"
+    timeout             = "3"
+    path                = var.my-hc-path
+    unhealthy_threshold = "2"
+  }
+  tags                  = {
+    Name                = "my-lb-tg-8081-${random_string.my-random-string.result}"
+    Terraform           = "true"
+    Project             = var.my-project-name
+    Environment         = var.my-environment
+  }
+}
+# resource "aws_lb_target_group_attachment" "my-lb-attachment-27017" {
+#   target_group_arn      = aws_lb_target_group.my-lb-tg-27017.arn
+#   target_id             = "mongodb"
+#   port                  = 27017
 # }

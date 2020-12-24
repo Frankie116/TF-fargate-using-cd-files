@@ -9,11 +9,11 @@
 #   value = aws_lb.my-alb.dns_name
 # }
 
-# 6a-route53.tf ----------------------------------------------------------
-output this-new-dns-name {
-  description          = "New Public DNS name of loadbalancer's route53 A record"
-  value                = aws_route53_record.my-r53-record.fqdn
-}
+# # 6a-route53.tf ----------------------------------------------------------
+# output this-new-dns-name {
+#   description          = "New Public DNS name of loadbalancer's route53 A record"
+#   value                = aws_route53_record.my-r53-record.fqdn
+# }
 
 
 # 12a-ecs.tf -------------------------------------------------------------

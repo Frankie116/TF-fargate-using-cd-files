@@ -31,10 +31,25 @@ resource "aws_ecs_service" "my-ecs-service" {
     subnets                          = module.my-vpc.private_subnets
     assign_public_ip                 = true
   }
+  service_registries {
+    registry_arn                     = aws_service_discovery_service.my-sd-service-priv.arn
+    # container_port                   = 3000 
+    container_name                   = "my-app" 
+  }
   load_balancer { 
     target_group_arn                 = aws_lb_target_group.my-lb-tg.id
-    container_name                   = "mongo-express"
+    container_name                   = "my-app"
     container_port                   = var.my-docker-port
   }
-  depends_on                         = [aws_lb_listener.my-lb-listener-http, aws_iam_role_policy_attachment.my-iampa-ecs-task-exec]
+  load_balancer { 
+    target_group_arn                 = aws_lb_target_group.my-lb-tg-27017.id
+    container_name                   = "mongodb"
+    container_port                   = 27017
+  }
+    load_balancer { 
+    target_group_arn                 = aws_lb_target_group.my-lb-tg-8081.id
+    container_name                   = "mongo-express"
+    container_port                   = 8081
+  }
+  depends_on                         = [aws_lb.my-alb, aws_lb_listener.my-lb-listener-my-docker-port, aws_lb_listener.my-lb-listener-8081, aws_iam_role_policy_attachment.my-iampa-ecs-task-exec]
 }
