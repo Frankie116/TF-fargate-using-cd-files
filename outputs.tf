@@ -5,25 +5,41 @@
 # ---------------------------------------------------------------------------------------------------
 
 
-# output "my-alb-hostname" {
-#   value = aws_lb.my-alb.dns_name
-# }
 
-# # 6a-route53.tf ----------------------------------------------------------
-# output this-new-dns-name {
-#   description          = "New Public DNS name of loadbalancer's route53 A record"
-#   value                = aws_route53_record.my-r53-record.fqdn
-# }
-
+# 05a-lb-alb.tf ----------------------------------------------------------
+output my-website-address {
+  description          = "Full website addresss including port number"
+  value                = "${aws_route53_record.my-r53-record.fqdn}:${var.my-docker-port1}"
+}
 
 # 12a-ecs.tf -------------------------------------------------------------
-output my-docker-port {
+output my-docker-port1 {
   description          = "Exposed docker port"
-  value                = var.my-docker-port
+  value                = var.my-docker-port1
+}
+
+output my-docker-port2 {
+  description          = "Exposed docker port"
+  value                = var.my-docker-port2
+}
+
+output my-docker-port3 {
+  description          = "Exposed docker port"
+  value                = var.my-docker-port3
 }
 
 # 09c-template-file ----------------------------------------------------------
-output my-ecs-cd-template {
+output my-ecs-cd-template1 {
   description          = "Name of the container definition"
-  value                = var.my-ecs-cd-template 
+  value                = var.my-ecs-cd-template1
+}
+
+output my-ecs-cd-template2 {
+  description          = "Name of the container definition"
+  value                = var.my-ecs-cd-template2
+}
+
+output my-ecs-cd-template3 {
+  description          = "Name of the container definition"
+  value                = var.my-ecs-cd-template3
 }

@@ -93,14 +93,31 @@ variable my-pub-subnet-cidr-blocks {
 
 
 # 04c-sg-rules -------------------------------------------------------------
-variable "my-docker-port" {
+variable "my-docker-port1" {
   description           = "Port exposed by the docker image to redirect traffic to"
   default               = 80
 }
 
+variable "my-docker-port2" {
+  description           = "Port exposed by the docker image to redirect traffic to"
+  default               = 80
+}
+
+variable "my-docker-port3" {
+  description           = "Port exposed by the docker image to redirect traffic to"
+  default               = 80
+}
 
 # 05c-lb-tg ----------------------------------------------------------------
-variable "my-hc-path" {
+variable "my-hc-path1" {
+  default               = "/"
+}
+
+variable "my-hc-path2" {
+  default               = "/"
+}
+
+variable "my-hc-path3" {
   default               = "/"
 }
 
@@ -118,10 +135,17 @@ variable "my-lb-hosted-zone" {
     default             = "ZHREDACTEDK8"
 } 
 
-variable "my-application" {
+variable "my-application1" {
     default             = "my-app"
 } 
 
+variable "my-application2" {
+    default             = "my-app2"
+} 
+
+variable "my-application3" {
+    default             = "my-app3"
+} 
 
 # 08a-iam-roles ------------------------------------------------------------
 variable "my-ecs-task-execution-role-name" {
@@ -148,11 +172,20 @@ variable "my-az-count" {
 
 
 # 09c-template-file ----------------------------------------------------------
-variable "my-ecs-cd-template" {
+variable "my-ecs-cd-template1" {
   description           = "ecs container definition template"
   default               = "my-ecs-cd-template.json.tpl"
 }
 
+variable "my-ecs-cd-template2" {
+  description           = "ecs container definition template"
+  default               = "my-ecs-cd-template.json.tpl"
+}
+
+variable "my-ecs-cd-template3" {
+  description           = "ecs container definition template"
+  default               = "my-ecs-cd-template.json.tpl"
+}
 
 # 12a-ecs --------------------------------------------------------------------
 variable "my-desired-container-count" {

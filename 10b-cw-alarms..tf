@@ -23,7 +23,7 @@ resource "aws_cloudwatch_metric_alarm" "my-cw-service-cpu-high" {
   threshold                      = "85"
   dimensions                     = {
     ClusterName                  = aws_ecs_cluster.my-ecs-cluster.name
-    ServiceName                  = aws_ecs_service.my-ecs-service.name
+    ServiceName                  = aws_ecs_service.my-ecs-service1.name
   }
   alarm_actions                  = [aws_appautoscaling_policy.my-as-policy-up.arn]
 }
@@ -41,7 +41,7 @@ resource "aws_cloudwatch_metric_alarm" "my-cw-service-cpu-low" {
   threshold                      = "10"
   dimensions                     = {
     ClusterName                  = aws_ecs_cluster.my-ecs-cluster.name
-    ServiceName                  = aws_ecs_service.my-ecs-service.name
+    ServiceName                  = aws_ecs_service.my-ecs-service1.name
   }
   alarm_actions                  = [aws_appautoscaling_policy.my-as-policy-down.arn]
 }

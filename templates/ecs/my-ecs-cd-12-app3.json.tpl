@@ -1,7 +1,7 @@
-[
+[   
   {
-    "name": "myapp",
-    "image": "docker.io/mongo-express:latest",
+    "name": "mongo-express",
+    "image": "396057208705.dkr.ecr.eu-west-2.amazonaws.com/my-mongo-express:6.0",
     "networkMode": "awsvpc",
     "logConfiguration": {
         "logDriver": "awslogs",
@@ -37,7 +37,7 @@
       },
       {
         "name": "ME_CONFIG_MONGODB_SERVER",
-         "value": "localhost"
+         "value": "mongodb"
       }
     ]
   }

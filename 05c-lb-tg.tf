@@ -15,11 +15,11 @@
 # variables.tf          - var.my-environment
 
 
-resource "aws_lb_target_group" "my-lb-tg" {
-  name                  = "my-lb-tg"
+resource "aws_lb_target_group" "my-lb-tg1" {
+  name                  = "my-lb-tg1"
   vpc_id                = module.my-vpc.vpc_id
   protocol              = "HTTP"
-  port                  = var.my-docker-port
+  port                  = var.my-docker-port1
   target_type           = "ip"
   health_check {
     healthy_threshold   = "3"
@@ -27,22 +27,22 @@ resource "aws_lb_target_group" "my-lb-tg" {
     protocol            = "HTTP"
     matcher             = "200"
     timeout             = "3"
-    path                = var.my-hc-path
+    path                = var.my-hc-path1
     unhealthy_threshold = "2"
   }
   tags                  = {
-    Name                = "my-lb-tg-${random_string.my-random-string.result}"
+    Name                = "my-lb-tg1-${random_string.my-random-string.result}"
     Terraform           = "true"
     Project             = var.my-project-name
     Environment         = var.my-environment
   }
 }
 
-resource "aws_lb_target_group" "my-lb-tg-27017" {
-  name                  = "my-lb-tg-27017"
+resource "aws_lb_target_group" "my-lb-tg2" {
+  name                  = "my-lb-tg2"
   vpc_id                = module.my-vpc.vpc_id
   protocol              = "HTTP"
-  port                  = 27017
+  port                  = var.my-docker-port2
   target_type           = "ip"
   health_check {
     healthy_threshold   = "3"
@@ -50,22 +50,22 @@ resource "aws_lb_target_group" "my-lb-tg-27017" {
     protocol            = "HTTP"
     matcher             = "200"
     timeout             = "3"
-    path                = var.my-hc-path
+    path                = var.my-hc-path2
     unhealthy_threshold = "2"
   }
   tags                  = {
-    Name                = "my-lb-tg-27017-${random_string.my-random-string.result}"
+    Name                = "my-lb-tg2-${random_string.my-random-string.result}"
     Terraform           = "true"
     Project             = var.my-project-name
     Environment         = var.my-environment
   }
 }
 
-resource "aws_lb_target_group" "my-lb-tg-8081" {
-  name                  = "my-lb-tg-8081"
+resource "aws_lb_target_group" "my-lb-tg3" {
+  name                  = "my-lb-tg3"
   vpc_id                = module.my-vpc.vpc_id
   protocol              = "HTTP"
-  port                  = 8081
+  port                  = var.my-docker-port3
   target_type           = "ip"
   health_check {
     healthy_threshold   = "3"
@@ -73,18 +73,14 @@ resource "aws_lb_target_group" "my-lb-tg-8081" {
     protocol            = "HTTP"
     matcher             = "200"
     timeout             = "3"
-    path                = var.my-hc-path
+    path                = var.my-hc-path3
     unhealthy_threshold = "2"
   }
   tags                  = {
-    Name                = "my-lb-tg-8081-${random_string.my-random-string.result}"
+    Name                = "my-lb-tg3-${random_string.my-random-string.result}"
     Terraform           = "true"
     Project             = var.my-project-name
     Environment         = var.my-environment
   }
 }
-# resource "aws_lb_target_group_attachment" "my-lb-attachment-27017" {
-#   target_group_arn      = aws_lb_target_group.my-lb-tg-27017.arn
-#   target_id             = "mongodb"
-#   port                  = 27017
-# }
+

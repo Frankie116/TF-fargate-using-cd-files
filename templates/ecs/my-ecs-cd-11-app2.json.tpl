@@ -1,7 +1,7 @@
 [
-   {
-    "name": "myapp",
-    "image": "docker.io/frankie116/lab045-docker-image",
+  {
+    "name": "mongodb",
+    "image": "docker.io/mongo:latest",
     "networkMode": "awsvpc",
     "logConfiguration": {
         "logDriver": "awslogs",
@@ -13,8 +13,8 @@
     },
     "portMappings": [
       {
-        "containerPort": ${my-cd-port},
-        "hostPort": ${my-cd-port}
+        "containerPort": 27017,
+        "hostPort": 27017
       }
     ],
     "healthCheck": {
@@ -25,6 +25,16 @@
         "interval": 5,
         "timeout": 2,
         "retries": 3
-    }
+    },
+    "environment": [
+      {
+        "name": "MONGO_INITDB_ROOT_USERNAME",
+         "value": "admin"
+      },
+      {
+        "name": "MONGO_INITDB_ROOT_PASSWORD",
+         "value": "password"
+      }
+    ]    
   }
 ]
