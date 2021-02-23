@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------
-##  Project: TF08-jenkins-fargate
+##  Project: TF09-jenkins-fargate
 
 Purpose: This project creates a loadbalanced fargate infrastructure using Terraform & Jenkins. 
 
