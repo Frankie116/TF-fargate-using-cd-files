@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------
-#  Project: TF-fargate-using-cd-files
+##  Project: TF08-jenkins-fargate
 
 Purpose: This project creates a loadbalanced fargate infrastructure using Terraform & Jenkins. 
 
