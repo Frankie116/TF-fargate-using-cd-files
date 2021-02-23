@@ -1,12 +1,15 @@
-# ---------------------------------------------------------------------------------------------------
-# version  1.6
-# Library: https://github.com/Frankie116/my-library.git
+----------------------------------------------------------------------------
 #  Project: TF-fargate-using-cd-files
-## Purpose: This project creates a loadbalanced fargate infrastructure used to host a   
-##          simple app that is run inside three interconnected docker containers on 
-##          the AWS cloud platform.
-   Author:  Frank Effrim-Botchey
-## ----------------------------------------------------------------------------
+
+Purpose: This project creates a loadbalanced fargate infrastructure using Terraform & Jenkins. 
+
+A simple app is run inside three interconnected docker containers on the AWS cloud platform.
+
+Author:  Frank Effrim-Botchey
+   
+Library: https://github.com/Frankie116/my-library.git
+   
+----------------------------------------------------------------------------
 
 This project is part of a jenkins pipeline which monitors changes in my other git repo (lab051a-build-docker-image).
 
