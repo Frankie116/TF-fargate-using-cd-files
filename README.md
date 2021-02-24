@@ -1,4 +1,5 @@
-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+
 ## Project: TF11-jenkins-fargate
 
 Purpose: This project creates a loadbalanced fargate infrastructure using Terraform & Jenkins. 
@@ -11,7 +12,7 @@ Library: https://github.com/Frankie116/my-library.git
    
 ----------------------------------------------------------------------------
 
-This project is part of a jenkins pipeline which monitors changes in my other git repo (lab051a-build-docker-image).
+This project is part of a jenkins pipeline which monitors changes in my other git repo (lab051-build-docker-image).
 
 The following is performed when changes are detected in the repo.
 
