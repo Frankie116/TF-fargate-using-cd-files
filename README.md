@@ -1,4 +1,4 @@
-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 ## Project: TF11-jenkins-fargate
 
@@ -10,7 +10,7 @@ Author:  Frank Effrim-Botchey
    
 Library: https://github.com/Frankie116/my-library.git
    
------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 
 This project is part of a jenkins pipeline which monitors changes in my other git repo (lab051-build-docker-image).
 
